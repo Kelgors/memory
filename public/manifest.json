@@ -5,8 +5,13 @@
   "icons": [
     {
       "src": "icons/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "icons/pwa-64x64.png",
+      "type": "image/png",
+      "sizes": "64x64"
     },
     {
       "src": "icons/pwa-192x192.png",
@@ -16,7 +21,8 @@
     {
       "src": "icons/pwa-512x512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
     },
     {
       "src": "icons/maskable-icon-512x512.png",
