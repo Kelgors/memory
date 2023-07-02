@@ -1,26 +1,62 @@
 {
   "short_name": "Memory",
-  "name": "Memory game",
+  "name": "Memory",
+  "description": "Discover place of cards and pair them to complete the game.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "icons/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "icons/pwa-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "icons/pwa-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "icons/maskable-icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ],
   "start_url": "/",
   "display": "standalone",
-  "orientation": "landscape",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "screenshots": [
+    {
+      "src": "screenshots/playboard-1-480x640.png",
+      "sizes": "480x640",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Game board with some cards revealed"
+    },
+    {
+      "src": "screenshots/playboard-2-480x640.png",
+      "sizes": "480x640",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Game board with some cards revealed"
+    },
+    {
+      "src": "screenshots/end-1-480x640.png",
+      "sizes": "480x640",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "End screen and summary"
+    },
+    {
+      "src": "screenshots/menu-1-480x640.png",
+      "sizes": "480x640",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Main menu screen"
+    }
+  ]
 }
