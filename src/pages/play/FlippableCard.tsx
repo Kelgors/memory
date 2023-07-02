@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 import { useCallback } from 'react';
 import { Card } from '../../game/Deck';
 
@@ -34,7 +35,7 @@ const BackfaceCard = styled(CardFace)`
   transform: rotateY(180deg);
 `;
 
-export function FlipableCard(props: CardProps) {
+export function FlippableCard(props: CardProps) {
   const { card, position, onClick } = props;
   const onCardClicked = useCallback(
     function () {
@@ -42,6 +43,7 @@ export function FlipableCard(props: CardProps) {
     },
     [onClick, card, position]
   );
+  const theme = useTheme();
   return (
     <Box
       className={props.className}
@@ -64,7 +66,11 @@ export function FlipableCard(props: CardProps) {
           transform: `rotateY(${props.visible || props.paired ? '0' : '180deg'})`
         }}
       >
-        <BackfaceCard sx={{ backgroundColor: 'black' }}></BackfaceCard>
+        <BackfaceCard
+          sx={{
+            backgroundColor: theme.palette.mode === 'dark' ? '#ccc' : '#333'
+          }}
+        ></BackfaceCard>
         <FrontfaceCard>
           <img src={`/cards-optimized/${card.fileName}`} alt="" />
         </FrontfaceCard>

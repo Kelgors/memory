@@ -5,25 +5,38 @@ import shuffle from 'lodash/shuffle';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { wait } from '../../components/wait';
-import { createDeck } from '../../game/Deck';
+import { Card, createDeck } from '../../game/Deck';
 import { gameState } from '../../game/GameState';
-import { FlipableCard, OnCardClickedEvent } from './FlipableCard';
+import { FlippableCard, OnCardClickedEvent } from './FlippableCard';
 
 const Cell = styled(Grid)`
   aspect-ratio: 976/1600;
 `;
 
+type CardBoard = {
+  card: Card;
+  position: number;
+  paired: boolean;
+  visible: boolean;
+};
+type Board = CardBoard[];
+
+function getColumnCountFromOrientation() {
+  return window.screen.availWidth > window.screen.availHeight ? 10 : 6;
+}
+
 export function PlayPage() {
   const navigate = useNavigate();
+  const [columnCount, setColumnCount] = useState<number>(getColumnCountFromOrientation);
 
   useEffect(function () {
     gameState.restart();
   }, []);
 
-  const [board, setBoard] = useState(function () {
+  const [board, setBoard] = useState<Board>(function () {
     const deck = createDeck();
     return shuffle(
-      Array.from(Array(9).keys()).flatMap((d, i) => {
+      Array.from(Array(15).keys()).flatMap((d, i) => {
         const randomIndex = Math.floor(Math.random() * deck.length);
         const card = deck.splice(randomIndex, 1)[0];
         return [
@@ -115,13 +128,27 @@ export function PlayPage() {
     [pairedCardsCount, board]
   );
 
+  const onOrientationChanged = useCallback(function () {
+    setColumnCount(getColumnCountFromOrientation());
+  }, []);
+
+  useEffect(
+    function () {
+      window.addEventListener('orientationchange', onOrientationChanged);
+      return function () {
+        window.removeEventListener('orientationchange', onOrientationChanged);
+      };
+    },
+    [onOrientationChanged]
+  );
+
   return (
     <Container maxWidth="md" sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
-      <Grid container columns={6} spacing={1}>
-        {board.map(function ({ card, paired, visible, position }, index) {
+      <Grid container columns={columnCount} spacing={1}>
+        {board.map(function ({ card, paired, visible }, index) {
           return (
             <Cell item xs={1} key={index} sx={{ alignItems: 'center', justifyContent: 'center' }}>
-              <FlipableCard card={card} position={index} paired={paired} visible={visible} onClick={onCardClicked} />
+              <FlippableCard card={card} position={index} paired={paired} visible={visible} onClick={onCardClicked} />
             </Cell>
           );
         })}

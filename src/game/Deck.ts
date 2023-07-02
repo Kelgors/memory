@@ -56,8 +56,17 @@ export type HikariCard = BaseCard<CardType.HIKARI, HikariVariant>;
 export type Card = KasuCard | TanzakuCard | TaneCard | HikariCard;
 
 export function createDeck() {
+  const kasu: Month[] = [];
   return CARDS.map(function (card) {
     return { ...card };
+  }).filter(function (card) {
+    if (card.type === CardType.KASU) {
+      if (kasu.includes(card.month)) {
+        return false;
+      }
+      kasu.push(card.month);
+    }
+    return true;
   });
 }
 

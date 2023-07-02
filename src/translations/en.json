@@ -4,13 +4,18 @@
   "home.buttons.play": "Play",
   "home.buttons.options": "Options",
   "home.buttons.credits": "Credits",
+
+  "credits.created-by": "Created by <link></link> in 2023",
+  "credits.sources": "Code source is available on <link></link>",
+  "credits.cards": "Hanafuda cards created by <author></author> under <license></license> license and optimized by <svgo></svgo>",
+
+  "credits.icon": "Brain icon inside application icon created by <author></author> under the <license></license> license",
+
   "end.title": "Congratulation!",
-  "end.message": "You made it in {{tryCount}} tries in {{duration}}!",
+  "end.message": "You made it in {tryCount} tries in {duration}!",
   "end.buttons.restart": "Restart",
   "end.buttons.quit": "Main menu",
 
-  "duration.minutes_one": "{{count}} minute",
-  "duration.minutes_other": "{{count}} minutes",
-  "duration.seconds_one": "{{count}} second",
-  "duration.seconds_other": "{{count}} seconds"
+  "duration.minutes": "{minutes, plural, =0 {} one {1 minute} other {# minutes}}",
+  "duration.seconds": "{seconds, plural, =0 {} one {1 second} other {# seconds}}"
 }

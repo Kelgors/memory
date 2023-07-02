@@ -1,6 +1,7 @@
 import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import { useEffect, useMemo } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import { AppContainer } from '../../components/AppContainer';
 import { Button } from '../../components/Button';
@@ -8,7 +9,7 @@ import { gameState } from '../../game/GameState';
 
 export function EndPage() {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const intl = useIntl();
   const duration = Math.floor(gameState.getDuration() / 1000);
 
   useEffect(function () {
@@ -23,29 +24,29 @@ export function EndPage() {
       const seconds = duration - minutes * 60;
       const formattedTime = [];
       if (minutes > 0) {
-        formattedTime.push(t('duration.minutes', { count: minutes }));
+        formattedTime.push(intl.formatMessage({ id: 'duration.minutes' }, { minutes: minutes }));
       }
       if (seconds > 0) {
-        formattedTime.push(t('duration.seconds', { count: seconds }));
+        formattedTime.push(intl.formatMessage({ id: 'duration.seconds' }, { seconds: seconds }));
       }
       return formattedTime.join(' ');
     },
-    [duration]
+    [duration, intl]
   );
   return (
     <AppContainer>
-      <h1>
-        <Trans>end.title</Trans>
-      </h1>
-      <h3>
-        <Trans values={{ duration: humanDuration, tryCount: gameState.tryCount }}>end.message</Trans>
-      </h3>
+      <Typography variant="h3" sx={{ py: 2 }}>
+        <FormattedMessage id="end.title" />
+      </Typography>
+      <Typography variant="h6" sx={{ py: 1 }}>
+        <FormattedMessage id="end.message" values={{ duration: humanDuration, tryCount: gameState.tryCount }} />
+      </Typography>
       <Stack spacing={2}>
         <Button href="/play">
-          <Trans>end.buttons.restart</Trans>
+          <FormattedMessage id="end.buttons.restart" />
         </Button>
         <Button href="/">
-          <Trans>end.buttons.quit</Trans>
+          <FormattedMessage id="end.buttons.quit" />
         </Button>
       </Stack>
     </AppContainer>

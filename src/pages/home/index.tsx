@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack';
-import { Trans } from 'react-i18next';
+import { FormattedMessage } from 'react-intl';
 import { AppContainer } from '../../components/AppContainer';
 import { AppTitle } from '../../components/AppTitle';
 import { Button } from '../../components/Button';
@@ -10,13 +10,13 @@ export function HomePage() {
       <AppTitle />
       <Stack spacing={2}>
         <Button href="/play">
-          <Trans>home.buttons.play</Trans>
+          <FormattedMessage id="home.buttons.play" />
         </Button>
         <Button href="/options" disabled>
-          <Trans>home.buttons.options</Trans>
+          <FormattedMessage id="home.buttons.options" />
         </Button>
         <Button href="/credits">
-          <Trans>home.buttons.credits</Trans>
+          <FormattedMessage id="home.buttons.credits" />
         </Button>
       </Stack>
     </AppContainer>

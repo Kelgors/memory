@@ -4,13 +4,18 @@
   "home.buttons.play": "Jouer",
   "home.buttons.options": "Options",
   "home.buttons.credits": "Crédits",
+
+  "credits.created-by": "Créé par <link></link> en 2023",
+  "credits.sources": "Code source disponible sur <link></link>",
+  "credits.cards": "Les cartes de Hanafuda ont été produites par <author></author> sous la licence <license></license> et optimisées avec <svgo></svgo>",
+
+  "credits.icon": "Le cerveau dans l'icône de l'application a été créée par <author></author> sous la licence <license></license>",
+
   "end.title": "Félicitations!",
-  "end.message": "Vous l'avez fait en {{tryCount}} essais en {{duration}}!",
+  "end.message": "Vous l'avez fait en {tryCount} essais en {duration}!",
   "end.buttons.restart": "Rejouer",
   "end.buttons.quit": "Retour au menu",
 
-  "duration.minutes_one": "{{count}} minute",
-  "duration.minutes_other": "{{count}} minutes",
-  "duration.seconds_one": "{{count}} seconde",
-  "duration.seconds_other": "{{count}} secondes"
+  "duration.minutes": "{minutes, plural, =0 {} one {1 minute} other {# minutes}}",
+  "duration.seconds": "{seconds, plural, =0 {seconde} one {1 seconde} other {# secondes}}"
 }

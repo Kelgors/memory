@@ -1,9 +1,10 @@
-import { Trans } from 'react-i18next';
+import { Typography } from '@mui/material';
+import { FormattedMessage } from 'react-intl';
 
 export function AppTitle() {
   return (
-    <h1>
-      <Trans>app.title</Trans>
-    </h1>
+    <Typography variant="h3" sx={{ py: 2 }}>
+      <FormattedMessage id="app.title"></FormattedMessage>
+    </Typography>
   );
 }
